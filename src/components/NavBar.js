@@ -1,8 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.bundle';
+// import 'jquery/dist/jquery.slim.min.js';
+// import 'jquery/dist/jquery.min.js';
+import 'popper.js/dist/umd/popper.min.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+
 
 
 export default function NavBar() {
@@ -19,19 +25,14 @@ export default function NavBar() {
          <span className="navbar-toggler-icon"></span>
        </button>
  
-       <div className="navbar-collapse justify-content-md-center collapse" id="navbarsExample08">
+       <div className="navbar-collapse justify-content-md-center collapse" id="navbarsExample08" data-toggle="collapse" data-target=".navbar-collapse">
          <ul className="navbar-nav">
            <li className="nav-item">
-            <NavLink className="nav-link px-5" extact to="/" activeClassName="active">Home</NavLink>
+            <NavLink className="nav-link px-5" extact to="/" activeClassName="active"><span>Home</span></NavLink>
            </li>
-           <li className="nav-item">
-            <NavLink className="nav-link px-5" extact to="/rule" activeClassName="active">Rule</NavLink>
-           </li>
-           {/* <li className="nav-item">
-             <a className="nav-link disabled">Disabled</a>
-           </li> */}
+
            <li className="nav-item dropdown">
-             <NavLink className="nav-link dropdown-toggle px-5" extact to="/game" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false" activeClassName="active">Game</NavLink>
+             <NavLink className="nav-link dropdown-toggle px-5" extact to="/game" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false" activeClassName="active"><span>Game</span></NavLink>
              {/* <a className="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a> */}
              
              <ul className="dropdown-menu" aria-labelledby="dropdown08">
@@ -39,11 +40,19 @@ export default function NavBar() {
                <li><a className="dropdown-item" href="#">Another action</a></li>
                <li><a className="dropdown-item" href="#">Something else here</a></li> */}
 
-               <li><NavLink className="dropdown-item" to="/game">Easy</NavLink></li>
-               <li><NavLink className="dropdown-item" to="/game">Medium</NavLink></li>
-               <li><NavLink className="dropdown-item" to="/game">Hard</NavLink></li>
+               <li><NavLink className="dropdown-item" to="/game/easy"><span>Easy</span></NavLink></li>
+               <li><NavLink className="dropdown-item" to="/game/medium"><span>Medium</span></NavLink></li>
+               <li><NavLink className="dropdown-item" to="/game/hard"><span>Hard</span></NavLink></li>
              </ul>
            </li>
+
+           <li className="nav-item">
+            <NavLink className="nav-link px-5" extact to="/rule" activeClassName="active"><span>Rule</span></NavLink>
+           </li>
+           {/* <li className="nav-item">
+             <a className="nav-link disabled">Disabled</a>
+           </li> */}
+           
          </ul>
        </div>
      </div>

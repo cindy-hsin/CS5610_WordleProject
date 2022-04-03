@@ -6,6 +6,9 @@ import Game from './components/Game';
 import Rule from './components/Rule';
 import NavBar from './components/NavBar';
 
+
+
+
 import './App.css';
 
 function App() {
@@ -15,9 +18,6 @@ function App() {
       is displayed on EVERY PAGE,
       because App is the highest parent!*/}
       <div>Wordle App Title!!</div>
-
-
-    
       
       <NavBar/>
        
@@ -31,7 +31,7 @@ function App() {
          Do not show when path contains "/". 
          Without 'exact': 'localhost:3000/game' will show both Home and Game component; */}
         <Route path="/" exact element={<Home/>}/>
-        <Route path="/game" element={<Game/>}/>
+        <Route path="/game/:difficulty" element={<Game/>}/>
         <Route path="/rule" element={<Rule/>}/>
       </Routes>
     
