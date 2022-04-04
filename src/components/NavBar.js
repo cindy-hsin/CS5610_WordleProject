@@ -28,11 +28,11 @@ export default function NavBar() {
        <div className="navbar-collapse justify-content-md-center collapse" id="navbarsExample08" data-toggle="collapse" data-target=".navbar-collapse">
          <ul className="navbar-nav">
            <li className="nav-item">
-            <NavLink className="nav-link px-5" extact to="/" activeClassName="active"><span>Home</span></NavLink>
+            <NavLink className="nav-link px-5" exact to="/" activeClassName="active"><span>Home</span></NavLink>
            </li>
 
            <li className="nav-item dropdown">
-             <NavLink className="nav-link dropdown-toggle px-5" extact to="/game" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false" activeClassName="active"><span>Game</span></NavLink>
+             <NavLink className="nav-link dropdown-toggle px-5" exact to="/game" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false" activeClassName="active"><span>Game</span></NavLink>
              {/* <a className="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a> */}
              
              <ul className="dropdown-menu" aria-labelledby="dropdown08">
