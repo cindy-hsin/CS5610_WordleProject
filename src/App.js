@@ -6,9 +6,6 @@ import Game from './components/Game';
 import Rule from './components/Rule';
 import NavBar from './components/NavBar';
 
-
-
-
 import './App.css';
 
 function App() {

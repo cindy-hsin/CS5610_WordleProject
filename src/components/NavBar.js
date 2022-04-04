@@ -40,9 +40,9 @@ export default function NavBar() {
                <li><a className="dropdown-item" href="#">Another action</a></li>
                <li><a className="dropdown-item" href="#">Something else here</a></li> */}
 
-               <li><NavLink className="dropdown-item" to="/game/easy"><span>Easy</span></NavLink></li>
-               <li><NavLink className="dropdown-item" to="/game/medium"><span>Medium</span></NavLink></li>
-               <li><NavLink className="dropdown-item" to="/game/hard"><span>Hard</span></NavLink></li>
+               <li><NavLink className="dropdown-item" exact to="/game/easy"><span>Easy</span></NavLink></li>
+               <li><NavLink className="dropdown-item" exact to="/game/medium"><span>Medium</span></NavLink></li>
+               <li><NavLink className="dropdown-item" exact to="/game/hard"><span>Hard</span></NavLink></li>
              </ul>
            </li>
 

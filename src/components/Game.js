@@ -10,15 +10,15 @@ import Output from './Output';
 const DIFFICULTY_SETTING = {
   easy: {
     wordLength : 5,
-    attempNumber: 7
+    attemptNumber: 7
   },
   medium: {
     wordLength : 6,
-    attempNumber: 7
+    attemptNumber: 7
   },
   hard: {
     wordLength : 7,
-    attempNumber: 5
+    attemptNumber: 5
   }
 }
 
@@ -33,6 +33,8 @@ export default function Game(props) {
    * https://reactjs.org/docs/conditional-rendering.html#:~:text=isLoggedIn%3B%0A%20%20%20%20let%20button%3B-,if%20(isLoggedIn)%20%7B,%7D,-return%20(%0A%20%20%20%20%20%20%3Cdiv%3E
    */
 
+
+  console.log("Game currentDifficultySetting: ", DIFFICULTY_SETTING[currentDifficulty]);
   return (
     
 
@@ -42,7 +44,7 @@ export default function Game(props) {
 
       <Status/>
       <Input />
-      <Output currentDifficultySettings={{wordLength: 5, attemptNumber: 7, targetWordList: []}}/>
+      <Output currentDifficultySetting={DIFFICULTY_SETTING[currentDifficulty]}/>
 
 
       
