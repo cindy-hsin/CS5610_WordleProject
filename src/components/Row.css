@@ -1,0 +1,8 @@
+.word-row {
+  /* width: 400px;
+  height: 50px; */
+  display: flex;
+  
+  justify-content: space-between;
+  margin: 5px 10px;
+}

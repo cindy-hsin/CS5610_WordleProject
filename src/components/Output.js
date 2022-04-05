@@ -3,8 +3,9 @@ import Row from './Row';
 
 
 export default function Output(props) {
-  const rowNumber = props.currentDifficultySetting.attemptNumber;
-  const wordLength = props.currentDifficultySetting.wordLength;
+  const rowNumber = props.rowNumber;
+  const wordLength = props.wordLength;
+  
   
   return(
     <div>

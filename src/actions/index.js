@@ -1,13 +1,56 @@
-export const updateStatusCorrectGuess = ()=> {
+// const resetDifficulty = (newDifficulty) => {
+//   return {
+//     type: "RESET_DIFFICULTY",
+//     payload: newDifficulty
+//   }
+// }
+
+
+export const resetRemainAttempNumber = (newRemainNumber) => {
   return {
-    type: "UPDATE_STATUS_CORRECT_GUESS"
+    type: "RESET_REMAIN_ATTEMPT_NUMBER",
+    payload: newRemainNumber
   }
 }
 
+
+
+export const resetAnswerWord = (newAnswerWord) => {
+  return {
+    type: "RESET_ANSWER_WORD",
+    payload: newAnswerWord
+  };
+}
+
+
+export const updateValidUserInput = (inputValidWord) => {
+  return {
+    type: "UPDATE_VALID_USER_INPUT",
+    payload: inputValidWord
+  };
+
+}
+
+export const updateStatusCorrectGuess = ()=> {
+  return {
+    type: "UPDATE_STATUS_CORRECT_GUESS"
+  };
+}
 
 
 export const updateStatusWrongGuess = ()=> {
   return {
     type: "UPDATE_STATUS_WRONG_GUESS"
-  }
+  };
 }
+
+// const actions = {
+//   resetRemainAttempNumber,
+//   // resetDifficulty,
+//   resetAnswerWord,
+//   updateValidUserInput,
+//   updateStatusCorrectGuess,
+//   updateStatusWrongGuess
+// }
+
+// export default actions;
