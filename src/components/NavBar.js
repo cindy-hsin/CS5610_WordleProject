@@ -20,7 +20,7 @@ export default function NavBar() {
 
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Tenth navbar example">
      <div className="container-fluid">
-       <a class="navbar-brand" href="/">Navbar</a>
+       <a classname="navbar-brand" href="/">Navbar</a>
        <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
          <span className="navbar-toggler-icon"></span>
        </button>
@@ -47,7 +47,7 @@ export default function NavBar() {
            </li>
 
            <li className="nav-item">
-            <NavLink className="nav-link px-5" extact to="/rule" activeClassName="active"><span>Rule</span></NavLink>
+            <NavLink className="nav-link px-5" exact to="/rule" activeClassName="active"><span>Rule</span></NavLink>
            </li>
            {/* <li className="nav-item">
              <a className="nav-link disabled">Disabled</a>

@@ -23,13 +23,34 @@ export default function Game(props) {
   console.log("Random Index: ", randomIndex);
   const answer = answerWordList[randomIndex];
   console.log("Answer word: ", answer);
+  const answerInfo = generateAnswerInfo(answer);
 
   const dispatch = useDispatch();
   // dispatch(resetDifficulty(currentDifficulty));
   dispatch(resetAnswerWord(answer));
   dispatch(resetRemainAttempNumber(currentDifficultySetting.attemptNumber));
+  
+  // TODO: Update global state "historyGuesses"
 
-  // TODO: Update global state "remainAttemptNumber"
+  function generateAnswerInfo(answer) {
+    for (let i in answer) {
+      const char = answer[i];
+      if (!(char in answerInfo)) {
+        answerInfo[char] = {
+          index: new Set([i]),
+          remainCount: 1
+        }
+      } else {
+        answerInfo[char].index.add(i);
+        answerInfo[char].remainCount +=1;
+      }
+    }
+  
+    return answerInfo;
+
+  }
+
+
 
 
   return (
@@ -48,7 +69,8 @@ export default function Game(props) {
       <Output 
         rowNumber = {currentDifficultySetting.attemptNumber}
         wordLength = {currentDifficultySetting.wordLength}
-        answer={answer}/>
+        answer={answer}
+        answerInfo={answerInfo}/>
 
 
       

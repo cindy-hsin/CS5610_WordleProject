@@ -44,6 +44,13 @@ export const updateStatusWrongGuess = ()=> {
   };
 }
 
+
+export const addToHistoryGuess = (newGuess) => {
+  return {
+    type: "ADD_TO_HISTORY_GUESS",
+    payload: newGuess
+  }
+}
 // const actions = {
 //   resetRemainAttempNumber,
 //   // resetDifficulty,

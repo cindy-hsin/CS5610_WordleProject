@@ -40,6 +40,10 @@ export default function game(state=initState, action) {
       return {...state,
         remainAttemptNumber: state.remainAttemptNumber + 1,
       };
+    case "ADD_TO_HISTORY_GUESS":
+      return {...state,
+        historyGuess: [...state.historyGuess, action.payload]
+      }
     
     default:
       return state;
