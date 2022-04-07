@@ -1,5 +1,6 @@
 import Row from './Row';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 import { updateStatusCorrectGuess, 
          updateStatusWrongGuess,
@@ -20,27 +21,41 @@ export default function Output(props) {
 
   const dispatch = useDispatch();
   
+  const [historyGuess, setHistoryGuess] = useState([]);
   // WHENEVER currentUserInput is updated:    //TODO: consider dupcliate valid input(user input the same valid input values twice)
   // UPDATE 
 
   // const guesses = Array(rowNumber).fill(null); 
   
   //TODO: Do we need shallowEqual for string type(primitive type)??
-  const userGuess = useSelector(state => state.game.currentUserInput); 
- 
   
-  const { correctCount, colors } = checkUserGuess(userGuess);
+  const userGuess = useSelector(state => state.game.currentUserInput); 
+  console.log("UserGuess: ", userGuess);
+  // const remainAttemptNumber = useSelector(state => state.game.remainAttemptNumber);
+  // console.log("RemainAttemptNumber: ", remainAttemptNumber);
 
-  if (correctCount === wordLength) {
-    dispatch(updateStatusCorrectGuess);  //TODO: re-render Status component;
-  } else {
-    dispatch(updateStatusWrongGuess);
+  if (userGuess !== null) {// NOTE: userGuess's initial value is null. This is to stop dispatching updateStatus actions when page is first loaded.  
+    const { correctCount, colors } = checkUserGuess(userGuess);
+    console.log(`User guess Checked!  correctCount: ${correctCount}, colors: ${colors}`);
+  
+    if (correctCount === wordLength) {
+      dispatch(updateStatusCorrectGuess());  //TODO: re-render Status component;
+      console.log("Dispatched updateStatusCorrectGuess")
+    } else {
+      dispatch(updateStatusWrongGuess());
+      console.log("Dispatched updateStatusWrongGuess")
+    }
+    dispatch(addToHistoryGuess(userGuess));
+    console.log("Dispatched addToHistoryGuess.");
+
+      // //TODO: Having two useSelector in Output. What's the logic for re-rendering?
+
   }
-  dispatch(addToHistoryGuess(userGuess));
+  // const updatedHistoryGuess = useSelector(state=>state.game.historyGuess);
+  // setHistoryGuess(); // ??
+  // console.log("Updated history guess: ", updatedHistoryGuess);
 
-  //TODO: Having two useSelector in Output. What's the logic for re-rendering?
-  const updatedHistoryGuess = useSelector(state=>state.game.historyGuess);
-
+  // TODO: updatedHistoryGuess should be local state?
 
   function checkUserGuess(userGuess) {
     let correctCount = 0;
@@ -91,11 +106,10 @@ export default function Output(props) {
     <div>
       <div>rowNumber: {rowNumber}</div>
       <div>wordLength: {wordLength}</div>
-      {/* {Array.from({length: rowNumber}, () => <Row wordLength={wordLength}/>)} */}
-      {
-        updatedHistoryGuess.map((guess)=>{<Row guess={}/>})
-
-      }
+       {Array.from({length: rowNumber}, (v,i) => <Row wordLength={wordLength} key={i}/>)}
+      {/* {
+        updatedHistoryGuess.map(guess => <Row guess={guess}/>)
+      } */}
     </div>
   )
 

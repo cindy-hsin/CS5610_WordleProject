@@ -6,7 +6,7 @@ const initState = {
   // the "RESET" button still needs to UPDATE answer.
   // It's easier to implement the UPDATE logic using global state.
   historyGuess: [],
-  currentUserInput: "init",     // TODO: 
+  currentUserInput: null,     // TODO: 
   remainAttemptNumber: -1,  // To be updated at first loading
   guessResult: false
 }
@@ -38,7 +38,7 @@ export default function game(state=initState, action) {
       };
     case "UPDATE_STATUS_WRONG_GUESS":
       return {...state,
-        remainAttemptNumber: state.remainAttemptNumber + 1,
+        remainAttemptNumber: state.remainAttemptNumber - 1,
       };
     case "ADD_TO_HISTORY_GUESS":
       return {...state,

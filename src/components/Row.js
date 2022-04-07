@@ -21,7 +21,7 @@ export default function Row(props) {
 
   return(
     <div className='word-row'> 
-      {Array.from({length: props.wordLength}, () => <Box />)}
+      {Array.from({length: props.wordLength}, (v,i) => <Box key={i}/>)}
     </div>
   )
   

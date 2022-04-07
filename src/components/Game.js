@@ -33,6 +33,7 @@ export default function Game(props) {
   // TODO: Update global state "historyGuesses"
 
   function generateAnswerInfo(answer) {
+    const answerInfo = {}
     for (let i in answer) {
       const char = answer[i];
       if (!(char in answerInfo)) {

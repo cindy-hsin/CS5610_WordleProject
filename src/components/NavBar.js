@@ -20,7 +20,7 @@ export default function NavBar() {
 
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Tenth navbar example">
      <div className="container-fluid">
-       <a classname="navbar-brand" href="/">Navbar</a>
+       <a className="navbar-brand" href="/">Navbar</a>
        <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
          <span className="navbar-toggler-icon"></span>
        </button>
