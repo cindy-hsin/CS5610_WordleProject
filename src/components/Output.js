@@ -21,7 +21,7 @@ export default function Output(props) {
 
   const dispatch = useDispatch();
   
-  const [historyGuess, setHistoryGuess] = useState([]);
+  // const [historyGuess, setHistoryGuess] = useState(Array(rowNumber).fill(null));
   // WHENEVER currentUserInput is updated:    //TODO: consider dupcliate valid input(user input the same valid input values twice)
   // UPDATE 
 
@@ -29,8 +29,13 @@ export default function Output(props) {
   
   //TODO: Do we need shallowEqual for string type(primitive type)??
   
-  const userGuess = useSelector(state => state.game.currentUserInput); 
-  console.log("UserGuess: ", userGuess);
+  const status = useSelector(state => state.game.status, shallowEqual); 
+  const userGuess = status.currentUserInput;
+  const remainAttemptNumber = status.remainAttemptNumber;
+  const historyGuess = status.historyGuess;
+  console.log(`userGuess: ${userGuess}, remainAttemptNumber: ${remainAttemptNumber}, historyGuess: ${historyGuess}`);
+  // const remainAttemptNumber = useSelector(state => state.game.remainAttemptNumber);
+  // console.log(`UserGuess:${userGuess}, remainAttemptNumber: ${remainAttemptNumber} `);
   // const remainAttemptNumber = useSelector(state => state.game.remainAttemptNumber);
   // console.log("RemainAttemptNumber: ", remainAttemptNumber);
 
@@ -41,18 +46,22 @@ export default function Output(props) {
     if (correctCount === wordLength) {
       dispatch(updateStatusCorrectGuess());  //TODO: re-render Status component;
       console.log("Dispatched updateStatusCorrectGuess")
-    } else {
-      dispatch(updateStatusWrongGuess());
-      console.log("Dispatched updateStatusWrongGuess")
     }
-    dispatch(addToHistoryGuess(userGuess));
-    console.log("Dispatched addToHistoryGuess.");
+    // } else {
+    //   dispatch(updateStatusWrongGuess());
+    //   console.log("Dispatched updateStatusWrongGuess")
+    // }
+    // dispatch(addToHistoryGuess(userGuess));
+    // console.log("Dispatched addToHistoryGuess.");
 
       // //TODO: Having two useSelector in Output. What's the logic for re-rendering?
-
+    // const currentRowId = rowNumber - remainAttemptNumber - 1;
+    // const currentRowId = rowNumber - remainAttemptNumber - 1;
   }
+
   // const updatedHistoryGuess = useSelector(state=>state.game.historyGuess);
-  // setHistoryGuess(); // ??
+  // const currentRow = 
+  // setHistoryGuess([...historyGuess, ]); 
   // console.log("Updated history guess: ", updatedHistoryGuess);
 
   // TODO: updatedHistoryGuess should be local state?
@@ -99,17 +108,18 @@ export default function Output(props) {
     };
   }
 
-
+  console.log("HistoryGuess.map result:", historyGuess.map((guess,i) => <Row rowId={i} guess={guess}/>))
 
 
   return(
     <div>
       <div>rowNumber: {rowNumber}</div>
       <div>wordLength: {wordLength}</div>
-       {Array.from({length: rowNumber}, (v,i) => <Row wordLength={wordLength} key={i}/>)}
-      {/* {
-        updatedHistoryGuess.map(guess => <Row guess={guess}/>)
-      } */}
+      {/* <Row guess={}/> */}
+       {/* {Array.from({length: rowNumber}, (v,i) => <Row wordLength={wordLength} key={i}/>)} */}
+      {
+        historyGuess.map((guess,i) => <Row wordLength={wordLength} rowId={i} guess={guess}/>)
+      }
     </div>
   )
 

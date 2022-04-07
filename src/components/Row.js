@@ -18,10 +18,11 @@ export default function Row(props) {
 
   
   
-
+  console.log(`Row id: ${props.rowId}, guess: ${props.guess}`);
   return(
     <div className='word-row'> 
-      {Array.from({length: props.wordLength}, (v,i) => <Box key={i}/>)}
+      row: {props.rowId}, guess: {props.guess}
+      {Array(props.wordLength).fill(<Box/>)}
     </div>
   )
   

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { resetRemainAttempNumber, resetAnswerWord } from '../actions';
+import { resetRemainAttemptNumber, resetAnswerWord } from '../actions';
 
 
 import Status from './Status';
@@ -28,7 +28,7 @@ export default function Game(props) {
   const dispatch = useDispatch();
   // dispatch(resetDifficulty(currentDifficulty));
   dispatch(resetAnswerWord(answer));
-  dispatch(resetRemainAttempNumber(currentDifficultySetting.attemptNumber));
+  dispatch(resetRemainAttemptNumber(currentDifficultySetting.attemptNumber));
   
   // TODO: Update global state "historyGuesses"
 
