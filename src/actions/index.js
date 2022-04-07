@@ -22,11 +22,19 @@ export const resetAnswerWord = (newAnswerWord) => {
   };
 }
 
-
-export const updateValidUserInput = (inputValidWord) => {
+export const resetHistoryGuess = (newHistoryGuess) => {
+  return {
+    type: "RESET_HISTORY_GUESS",
+    payload: newHistoryGuess
+  }
+}
+export const updateValidUserInput = (userInput, totalAttemptNumber) => {
   return {
     type: "UPDATE_VALID_USER_INPUT",
-    payload: inputValidWord
+    payload: {
+      userInput,
+      totalAttemptNumber
+    }
   };
 
 }

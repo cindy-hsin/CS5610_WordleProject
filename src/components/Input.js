@@ -60,7 +60,8 @@ export default function Input(props) {
       <button onClick={
         () => {
           if (validateInput(userInput, validWordLength)) {
-            dispatch(updateValidUserInput(userInput));
+            console.log("Inside Input, totalAttemptNumber", props.totalAttemptNumber);
+            dispatch(updateValidUserInput(userInput, props.totalAttemptNumber));
           }
         }
       }>{"Submit"}</button>

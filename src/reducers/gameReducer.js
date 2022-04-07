@@ -33,11 +33,26 @@ export default function game(state=initState, action) {
         status: {...state.status, 
           remainAttemptNumber: action.payload}
       }; 
+    case "RESET_HISTORY_GUESS": 
+      return {...state,
+        status: {...state.status, 
+          historyGuess: action.payload}
+      }; 
     case "UPDATE_VALID_USER_INPUT": 
+      const newHistoryGuess = [...state.status.historyGuess];
+      const currentRowId = action.payload.totalAttemptNumber - state.status.remainAttemptNumber;
+      console.log("totalAttemptNumber: ", action.payload.totalAttemptNumber );
+      console.log("remainAttemptNumber: ", state.status.remainAttemptNumber );
+      console.log("currentRowId: ", currentRowId)
+
+      // action.payload.totalAttempt is the total number of attempt of the current difficulty.
+
+      
+      newHistoryGuess[currentRowId] = action.payload.userInput;
       return {...state,
         status: {...state.status,
-          currentUserInput: action.payload,
-          historyGuess: [...state.status.historyGuess, action.payload],
+          currentUserInput: action.payload.userInput,
+          historyGuess: newHistoryGuess,
           remainAttemptNumber: state.status.remainAttemptNumber - 1
         }
       };
