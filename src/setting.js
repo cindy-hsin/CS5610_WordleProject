@@ -13,7 +13,7 @@ export const DIFFICULTY_SETTING = {
   hard: {
     wordLength : 7,
     attemptNumber: 5,
-    answerWordList: ['success', 'failure', 'various', 'everyone', 'stellar']
+    answerWordList: ['success', 'failure', 'various', 'average', 'stellar']
   }
 }
 
@@ -21,5 +21,5 @@ export const DIFFICULTY_SETTING = {
 export const VALID_ENGLISH_WORD_LIST = [
   'world', 'apple', 'handy', 'bloom', 'speed',
   'cherry', 'secret', 'gloomy', 'combat', 'hidden',
-  'success', 'failure', 'various', 'everyone', 'stellar'
+  'success', 'failure', 'various', 'average', 'stellar'
 ]

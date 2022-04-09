@@ -1,14 +1,29 @@
 import Box from './Box';
 import './Row.css';
+import React, {useState} from "react";
+import {shallowEqual, useSelector} from "react-redux";
 
 
 export default function Row(props) {
   const answerInfo = generateAnswerInfo(props.answer);
 
+  // const [currRowIdx, setCurrRowIdx] = useState(0);//--------------
+
+  const status = useSelector(state => state.game.status, shallowEqual);
+  const currentUserInput = status.currentUserInput;
+
+  // const [letter, setLetter] = useState("");
+  // const currAttemptIdx = props.rowNumber - status.remainAttemptNumber - 1;//---- -1????
+  // if(currAttemptIdx === props.id){
+  //   setLetter(props.userInput);
+  // }
 
 
 
-  function generateAnswerInfo(answer) {
+
+
+
+  function generateAnswerInfo(answer) {//得到的是一个set里头装着answer里面每个出现的字母的对应的index和次数
     const answerInfo = {};
     for (let i in answer) {
       const char = answer[i];
@@ -42,8 +57,9 @@ export default function Row(props) {
   
 
   return(
-    <div className='word-row'> 
-      {Array.from({length: props.wordLength}, () => <Box />)}
+    <div className='word-row'>
+      {/*{Array.from({length: props.wordLength}, (ele, idx) => <Box id={idx} key={idx}/>)}*/}
+      {Array.from({length: props.wordLength}, (ele, idx) => <Box id={idx} letter={currentUserInput[idx]}key={idx}/>)}
     </div>
   )
   

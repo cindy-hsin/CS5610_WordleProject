@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { updateValidUserInput } from "../actions";
 import { VALID_ENGLISH_WORD_LIST } from "../setting";
 
@@ -7,7 +7,11 @@ import { VALID_ENGLISH_WORD_LIST } from "../setting";
 export default function Input(props) {
   const validWordLength = props.validWordLength;
   //TODO: Word length should be passed in through props
-  let userInput;
+
+  // let userInput;
+  // let userInput = document.getElementById("input").value;
+  // console.log("init userInput: " + userInput);
+  let[userInput, setUserInput] = useState("");//需要用useState吗
   const [validationMessage, setValidationMessage] = useState("");
   const dispatch = useDispatch();
 
@@ -21,11 +25,9 @@ export default function Input(props) {
   
   /**
    * Check input length and Update validation Message
-   * 0: too short
-   * 1: correct length
-   * 2: too long
    */
   function checkLength(userInput, wordLength) {
+    console.log("checkLength: " + userInput);
     if (userInput.length < wordLength) {
       // Update  validation message: Your input word is too short"
       setValidationMessage("Your input word is too short");
@@ -52,15 +54,19 @@ export default function Input(props) {
   
   return (
     <div>Input Component!
-      <input
-        onChange={(event) => {userInput = event.target.value;
+      <input id="input"
+        onChange={(event) => {
+          setUserInput(event.target.value);
+          // userInput = event.target.value;
         console.log("userInput at onChange: ", userInput)}}
         type={"text"}
       />
       <button onClick={
         () => {
           if (validateInput(userInput, validWordLength)) {
+            console.log("dispatch input");
             dispatch(updateValidUserInput(userInput));
+            console.log("dispatch??");
           }
         }
       }>{"Submit"}</button>

@@ -6,7 +6,7 @@
 // }
 
 
-export const resetRemainAttempNumber = (newRemainNumber) => {
+export const resetRemainAttemptNumber = (newRemainNumber) => {
   return {
     type: "RESET_REMAIN_ATTEMPT_NUMBER",
     payload: newRemainNumber

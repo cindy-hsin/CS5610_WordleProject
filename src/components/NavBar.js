@@ -20,7 +20,7 @@ export default function NavBar() {
 
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Tenth navbar example">
      <div className="container-fluid">
-       <a class="navbar-brand" href="/">Navbar</a>
+       <a className="navbar-brand" href="/">Navbar</a>
        <button className="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
          <span className="navbar-toggler-icon"></span>
        </button>
@@ -28,11 +28,11 @@ export default function NavBar() {
        <div className="navbar-collapse justify-content-md-center collapse" id="navbarsExample08" data-toggle="collapse" data-target=".navbar-collapse">
          <ul className="navbar-nav">
            <li className="nav-item">
-            <NavLink className="nav-link px-5" exact to="/" activeClassName="active"><span>Home</span></NavLink>
+            <NavLink className="nav-link px-5" exact to="/" activeclassname="active"><span>Home</span></NavLink>
            </li>
 
            <li className="nav-item dropdown">
-             <NavLink className="nav-link dropdown-toggle px-5" exact to="/game" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false" activeClassName="active"><span>Game</span></NavLink>
+             <NavLink className="nav-link dropdown-toggle px-5" exact to="/game" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false" activeclassname="active"><span>Game</span></NavLink>
              {/* <a className="nav-link dropdown-toggle" href="#" id="dropdown08" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a> */}
              
              <ul className="dropdown-menu" aria-labelledby="dropdown08">
@@ -47,7 +47,7 @@ export default function NavBar() {
            </li>
 
            <li className="nav-item">
-            <NavLink className="nav-link px-5" extact to="/rule" activeClassName="active"><span>Rule</span></NavLink>
+            <NavLink className="nav-link px-5" extact to="/rule" activeclassname="active"><span>Rule</span></NavLink>
            </li>
            {/* <li className="nav-item">
              <a className="nav-link disabled">Disabled</a>
