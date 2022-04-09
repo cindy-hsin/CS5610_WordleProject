@@ -5,9 +5,30 @@ import { VALID_ENGLISH_WORD_LIST } from "../setting";
 
 
 export default function Input(props) {
+  
   const validWordLength = props.validWordLength;
-  //TODO: Word length should be passed in through props
-  let userInput;
+  // let userInput;
+  /** 
+   * Why userInput should be a local state:
+   * 
+   * Use "let userInput" instead of useState hook to keep track of
+   * userInput value between re-renders, will cause error when the
+   * user enters a word, and clicks "submit" once, 
+   * then click again without modifying the input.
+   * 
+   *  This error happens because every time user clicks "submit", 
+   *  function validateInput() is called, then the checkLength method 
+   *  calls setValidationMessage which triggers Input component to be re-rendered.
+   *  That means all code inside Input component will be re-run, and
+   *  so the "let userInput" will reset userInput back to "undefined".
+   *  And since user didn't modify input before user clicks "submit" again,
+   *  the onchange method is not called, i.e. userInput is not given any value from the UI,
+   *  so when user clicks "submit", userInput is still "undefined".
+   *  Thus, calling validateInput will result in an Error.
+   */ 
+   
+  const [userInput, setUserInput] = useState("");
+  console.log("Input Re-rendered!, userInput:", userInput);
   const [validationMessage, setValidationMessage] = useState("");
   const dispatch = useDispatch();
 
@@ -21,17 +42,12 @@ export default function Input(props) {
   
   /**
    * Check input length and Update validation Message
-   * 0: too short
-   * 1: correct length
-   * 2: too long
    */
   function checkLength(userInput, wordLength) {
     if (userInput.length < wordLength) {
-      // Update  validation message: Your input word is too short"
       setValidationMessage("Your input word is too short");
       return false;
     } else if (userInput.length > wordLength) {
-      // Update  validation message: Your input word is too long"
       setValidationMessage("Your input word is too long");
       return false;
     }
@@ -44,7 +60,9 @@ export default function Input(props) {
       setValidationMessage("Your input word is not a valid English word! ");
       return false;
     }
-    setValidationMessage(""); //?? Do we need this?
+    setValidationMessage(""); 
+    // Reset message to be empty when entering a 
+    // valid input after an invalid input
     return true;
   }
   
@@ -53,12 +71,15 @@ export default function Input(props) {
   return (
     <div>Input Component!
       <input
-        onChange={(event) => {userInput = event.target.value;
-        console.log("userInput at onChange: ", userInput)}}
+        onChange={(event) => {
+          setUserInput(event.target.value);
+          //userInput = event.target.value;
+          console.log("userInput at onChange: ", userInput)}}
         type={"text"}
       />
       <button onClick={
         () => {
+          console.log("userInput: ",userInput);
           if (validateInput(userInput, validWordLength)) {
             dispatch(updateValidUserInput(userInput));
           }

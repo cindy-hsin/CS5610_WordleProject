@@ -30,7 +30,7 @@ export default function NavBar() {
              <NavDropdown.Item href="/game/medium">Medium</NavDropdown.Item>
              <NavDropdown.Item href="/game/hard">Hard</NavDropdown.Item>
            </NavDropdown>
-           <Nav.Link href="/rule">Rules</Nav.Link>
+           <Nav.Link href="/rule">Rule</Nav.Link>
          </Nav>
        </Navbar.Collapse>
      </Container>
