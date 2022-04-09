@@ -29,7 +29,7 @@ export default function Output(props) {
   
   //TODO: Do we need shallowEqual for string type(primitive type)??
   
-  const status = useSelector(state => state.game.status, shallowEqual); 
+  const status = useSelector(state => state.game.status); 
   const userGuess = status.currentUserInput;
   const remainAttemptNumber = status.remainAttemptNumber;
   const historyGuess = status.historyGuess;
