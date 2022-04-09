@@ -3,6 +3,8 @@ import { useDispatch} from "react-redux";
 import { updateValidUserInput } from "../actions";
 import { VALID_ENGLISH_WORD_LIST } from "../setting";
 
+import { Alert } from 'react-bootstrap';
+
 
 export default function Input(props) {
   
@@ -45,10 +47,10 @@ export default function Input(props) {
    */
   function checkLength(userInput, wordLength) {
     if (userInput.length < wordLength) {
-      setValidationMessage("Your input word is too short");
+      setValidationMessage("Your input word is too short!");
       return false;
     } else if (userInput.length > wordLength) {
-      setValidationMessage("Your input word is too long");
+      setValidationMessage("Your input word is too long!");
       return false;
     }
     // setValidationMessage("");  //Don't need this. As long as we reset message to "" in checkEnglishWord.
@@ -70,6 +72,9 @@ export default function Input(props) {
   
   return (
     <div>Input Component!
+      <Alert variant="info" style={{width: "20rem", padding: "0.5rem 0.5rem"}}> 
+        <p style={{marginBottom: "0"}}>Please enter a {validWordLength}-letter word:</p>
+      </Alert>
       <input
         onChange={(event) => {
           setUserInput(event.target.value);
@@ -85,10 +90,12 @@ export default function Input(props) {
           }
         }
       }>{"Submit"}</button>
-      <div>Validation Message: {validationMessage}</div>
-       {/** TODO: Erase literal "Validation Message:", so that
-        * when user enters a valid input, no message is shown.
-        */}
+      { validationMessage === "" ? <></> : 
+         <Alert variant="danger" style={{width: "20rem", padding: "0.5rem 0.5rem"}}>
+          <p style={{marginBottom: "0"}}>{validationMessage}</p>
+        </Alert>
+      }
+
     </div>
   )
 }
