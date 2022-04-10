@@ -7,6 +7,7 @@ import { resetRemainAttemptNumber, resetAnswerWord } from '../actions';
 import Status from './Status';
 import Input from './Input';
 import Output from './Output';
+import { Button } from 'react-bootstrap';
 import { DIFFICULTY_SETTING } from '../setting';
 
 
@@ -26,7 +27,9 @@ export default function Game(props) {
   console.log("Answer word: ", answer);
   const answerInfo = generateAnswerInfo(answer);
 
+
   const dispatch = useDispatch();
+  
   // dispatch(resetDifficulty(currentDifficulty));
   dispatch(resetAnswerWord(answer));
   dispatch(resetRemainAttemptNumber(currentDifficultySetting.attemptNumber));
@@ -62,6 +65,8 @@ export default function Game(props) {
    */
     
     <div>
+      <Button href={"/game/" + currentDifficulty}
+        variant="dark">Restart</Button>
       <div>Game Level: {currentDifficulty}</div>
       <div>Target Word: {answer}</div>
 
@@ -79,6 +84,7 @@ export default function Game(props) {
         wordLength = {currentDifficultySetting.wordLength}
         answer={answer}
         answerInfo={answerInfo}/>
+
 
 
       
