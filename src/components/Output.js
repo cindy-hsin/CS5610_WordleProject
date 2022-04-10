@@ -118,7 +118,8 @@ export default function Output(props) {
       {/* <Row guess={}/> */}
        {/* {Array.from({length: rowNumber}, (v,i) => <Row wordLength={wordLength} key={i}/>)} */}
       {
-        historyGuess.map((guess,i) => <Row wordLength={wordLength} rowId={i} guess={guess}/>)
+        // historyGuess.map((guess,i) => <Row wordLength={wordLength} rowId={i} guess={guess}/>)
+        historyGuess.map((guess) => <Row wordLength={wordLength} guess={guess}/>)
       }
     </div>
   )
