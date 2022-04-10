@@ -7,7 +7,7 @@ export const DIFFICULTY_SETTING = {
   },
   medium: {
     wordLength : 6,
-    attemptNumber: 7,
+    attemptNumber: 6,
     answerWordList: ['cherry', 'secret', 'gloomy', 'combat', 'hidden']
   },
   hard: {

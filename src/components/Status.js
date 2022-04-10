@@ -5,9 +5,8 @@ import { disableInput } from  '../actions';
 export default function Status(props) {
   const status = useSelector(state => state.game.status, shallowEqual);
   const { guessResult, remainAttemptNumber}= status;
-
   const dispatch = useDispatch();
-  // Might need to be a local state:
+  
   let message = "";
   
   if (!guessResult && remainAttemptNumber > 0) {

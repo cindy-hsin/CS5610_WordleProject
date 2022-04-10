@@ -94,9 +94,17 @@ export default function Input(props) {
             const answerInfo = props.answerInfo;
             console.log("When confirm is a valid Input, answerInfo:", answerInfo);
 
-            // NOTICE!! {...answerInfo} is not a DEEP COPY!! 
-            // Because answerInfo is a deeply nested object. 
-            // Each value in answerInfo is still a object, which still contains complex type like Set.
+            /*
+            NOTICE! 1. We need a deep copy of answerInfo,
+            because in checkUserGuess() function, 
+            we will modify the count once a target character appears in the user's guess.
+            */
+
+           /*
+            NOTICE! 2.  {...answerInfo} is not a DEEP COPY!! 
+            Because answerInfo is a deeply nested object. 
+            Each value in answerInfo is still a object, which still contains complex type like Set.
+            */
             const answerInfoCopy = {};
             for (let char in answerInfo) { //char is the key
               answerInfoCopy[char] = {
@@ -104,8 +112,6 @@ export default function Input(props) {
                 count: answerInfo[char].count
               }
             }
-            // const answerInfoCopy = {...answerInfo};
-            console.log("answerInfoCopy:",  answerInfoCopy);
             
             dispatch(updateValidUserInput(userInput, answerInfoCopy, validWordLength));
           }

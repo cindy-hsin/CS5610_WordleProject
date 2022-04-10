@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { useDispatch, useSelector, shallowEqual} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { resetRemainAttemptNumber, resetAnswerWord } from '../actions';
 
 
@@ -30,7 +30,6 @@ export default function Game(props) {
 
   const dispatch = useDispatch();
   
-  // dispatch(resetDifficulty(currentDifficulty));
   dispatch(resetAnswerWord(answer));
   dispatch(resetRemainAttemptNumber(currentDifficultySetting.attemptNumber));
 
@@ -54,12 +53,7 @@ export default function Game(props) {
 
   }
 
-
-
-
   return (
-  
-
   /** Conditional rendering - documentation: 
    * https://reactjs.org/docs/conditional-rendering.html#:~:text=isLoggedIn%3B%0A%20%20%20%20let%20button%3B-,if%20(isLoggedIn)%20%7B,%7D,-return%20(%0A%20%20%20%20%20%20%3Cdiv%3E
    */
@@ -75,19 +69,11 @@ export default function Game(props) {
       <Input 
         validWordLength={currentDifficultySetting.wordLength} 
         answerInfo={answerInfo}
-        rowNumber = {currentDifficultySetting.attemptNumber}
-        // style={{display: isInputDisabled ? 'none' : 'block'}}
         />
 
       <Output 
-        rowNumber = {currentDifficultySetting.attemptNumber}
         wordLength = {currentDifficultySetting.wordLength}
-        answer={answer}
-        answerInfo={answerInfo}/>
-
-
-
-      
+        answer={answer}/>      
     </div>
   )
 };
