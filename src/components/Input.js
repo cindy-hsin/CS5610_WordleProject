@@ -91,7 +91,23 @@ export default function Input(props) {
       <button onClick={() => {
           console.log("userInput: ",userInput);
           if (validateInput(userInput, validWordLength)) {
-            dispatch(updateValidUserInput(userInput));
+            const answerInfo = props.answerInfo;
+            console.log("When confirm is a valid Input, answerInfo:", answerInfo);
+
+            // NOTICE!! {...answerInfo} is not a DEEP COPY!! 
+            // Because answerInfo is a deeply nested object. 
+            // Each value in answerInfo is still a object, which still contains complex type like Set.
+            const answerInfoCopy = {};
+            for (let char in answerInfo) { //char is the key
+              answerInfoCopy[char] = {
+                index: answerInfo[char].index,
+                count: answerInfo[char].count
+              }
+            }
+            // const answerInfoCopy = {...answerInfo};
+            console.log("answerInfoCopy:",  answerInfoCopy);
+            
+            dispatch(updateValidUserInput(userInput, answerInfoCopy, validWordLength));
           }
         }} disabled={isInputDisabled}
       >{"Submit"}</button>

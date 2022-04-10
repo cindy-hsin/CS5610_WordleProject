@@ -20,10 +20,12 @@ export const resetAnswerWord = (newAnswerWord) => {
   };
 }
 
-export const updateValidUserInput = (inputValidWord) => {
+export const updateValidUserInput = (inputValidWord, answerInfoCopy, wordLength) => {
   return {
     type: "UPDATE_VALID_USER_INPUT",
-    payload: inputValidWord
+    inputValidWord,
+    answerInfoCopy,
+    wordLength
   };
 
 }

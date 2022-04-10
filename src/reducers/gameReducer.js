@@ -1,3 +1,8 @@
+
+const GRAY = "gray";
+const GREEN = "green";
+const YELLOW = "yellow";
+
 const initState = {
   // difficulty: "Not DEFINED!!",  // To be updated at first loading
   answer: "",   // NEED THIS AS A Global state! 
@@ -10,8 +15,8 @@ const initState = {
   // remainAttemptNumber: -1,  // To be updated at first loading
   // guessResult: false
   status: {
-    currentUserInput:null,
-    historyGuess:[],
+    currentUserInput:null,  // only store VALID user input
+    historyGuess:[], // [{inputValidWord: "world" colors: ["grey", "grey","yellow","green","yellow"]}]
     remainAttemptNumber: -1,
     guessResult: false,
   },
@@ -36,10 +41,17 @@ export default function game(state=initState, action) {
           remainAttemptNumber: action.payload}
       }; 
     case "UPDATE_VALID_USER_INPUT": 
+      const colors = checkUserGuess(action.inputValidWord, action.answerInfoCopy, action.wordLength);
+      console.log("TEST HISTORYGUESS!: ", [...state.status.historyGuess, {
+        inputValidWord: action.inputValidWord, 
+        colors: colors}])
+
       return {...state,
         status: {...state.status,
-          currentUserInput: action.payload,
-          historyGuess: [...state.status.historyGuess, action.payload],
+          currentUserInput: action.inputValidWord,
+          historyGuess: [...state.status.historyGuess, {
+            inputValidWord: action.inputValidWord, 
+            colors: colors}],
           remainAttemptNumber: state.status.remainAttemptNumber - 1
         }
       };
@@ -74,4 +86,59 @@ export default function game(state=initState, action) {
   }
   
 
+}
+
+
+
+function checkUserGuess(inputValidWord, answerInfoCopy, wordLength) {
+  // NOTICE!! Need to make a deep copy of answerInfo!!! 
+  
+  // const answerInfoCopy = {...answerInfo};
+
+  // answerInfo is an object, 
+  // where each key is a char in the answer word,
+  // and each value is an object that represents the info of a char: {index: charIndexSet, count: charCount}
+  // const answerInfoCopy = {};
+  // for (let char in answerInfo) { //char is the key
+  //   answerInfoCopy[char] = {
+  //     index: answerInfo[char].index,
+  //     count: answerInfo[char].count
+  //   }
+  // }
+
+  // console.log(answerInfo, answerInfoCopy);
+
+  const colors = Array(wordLength).fill(null);
+  console.log("INSIDE checkUserGuess, colors: ", colors);
+  
+  for (let i in inputValidWord) {
+    const char = inputValidWord[i];
+    if (!(char in answerInfoCopy)) {
+      
+      console.log(`Index: ${i}, Char: ${char} Color: Gray`);
+      colors[i] = GRAY;
+      // Gray;
+    } else {
+      if (answerInfoCopy[char].count === 0) {
+        console.log(`Index: ${i}, Char: ${char} Color: Gray`);
+        colors[i] = GRAY;
+        //Gray;
+      } else {
+        
+        if (answerInfoCopy[char].index.has(i)) {
+          console.log(`Index: ${i}, Char: ${char} Color: Green`);
+          // Green;
+          colors[i] = GREEN;
+        } else {
+          console.log(`Index: ${i}, Char: ${char} Color: Yellow`);
+          colors[i] = YELLOW;
+          // Yellow
+        }
+        answerInfoCopy[char].count -= 1;
+        // NOTICE!! Don't modify the original answerInfo object!!
+      }
+    }
+  }
+  console.log("INSIDE checkUserGuess, before returning, colors: ", colors);
+  return colors;
 }

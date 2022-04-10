@@ -30,12 +30,6 @@ export default function Game(props) {
   // dispatch(resetDifficulty(currentDifficulty));
   dispatch(resetAnswerWord(answer));
   dispatch(resetRemainAttemptNumber(currentDifficultySetting.attemptNumber));
-  
-  // const status = useSelector(state => state.game.status, shallowEqual);
-  // const { isInputDisabled } = status;
-
-  
-
 
 
   function generateAnswerInfo(answer) {
@@ -45,14 +39,14 @@ export default function Game(props) {
       if (!(char in answerInfo)) {
         answerInfo[char] = {
           index: new Set([i]),
-          remainCount: 1
+          count: 1
         }
       } else {
         answerInfo[char].index.add(i);
-        answerInfo[char].remainCount +=1;
+        answerInfo[char].count +=1;
       }
     }
-  
+    console.log("Generate Answer Info: ", answerInfo)
     return answerInfo;
 
   }
@@ -75,6 +69,8 @@ export default function Game(props) {
 
       <Input 
         validWordLength={currentDifficultySetting.wordLength} 
+        answerInfo={answerInfo}
+        rowNumber = {currentDifficultySetting.attemptNumber}
         // style={{display: isInputDisabled ? 'none' : 'block'}}
         />
 

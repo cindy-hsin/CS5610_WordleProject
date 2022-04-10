@@ -16,16 +16,20 @@ export default function Row(props) {
   
   // }
 
+  const {inputValidWord, colors} = props.guess;
+
   
-  
-  console.log(`Row id: ${props.rowId}, guess: ${props.guess}`);
+  console.log(`Row id: ${props.rowId}, inputValidWord: ${inputValidWord}, colors: ${colors}`);
   return(
     <div className='word-row'> 
       {/* row: {props.rowId}, guess: {props.guess} */}
      
 
       {Array.from({length: props.wordLength}, 
-        (ele, idx) => <Box id={idx} letter={(props.guess)[idx]} key={idx}/>)
+        (ele, idx) => <Box id={idx} 
+          letter={inputValidWord[idx]} 
+          color= {colors[idx]}
+          key={idx}/>)
       }
      
       {/* Same as:
