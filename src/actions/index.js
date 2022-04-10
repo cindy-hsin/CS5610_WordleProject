@@ -13,15 +13,12 @@ export const resetRemainAttemptNumber = (newRemainNumber) => {
   }
 }
 
-
-
 export const resetAnswerWord = (newAnswerWord) => {
   return {
     type: "RESET_ANSWER_WORD",
     payload: newAnswerWord
   };
 }
-
 
 export const updateValidUserInput = (inputValidWord) => {
   return {
@@ -37,10 +34,15 @@ export const updateStatusCorrectGuess = ()=> {
   };
 }
 
+// export const updateStatusWrongGuess = ()=> {
+//   return {
+//     type: "UPDATE_STATUS_WRONG_GUESS"
+//   };
+// }
 
-export const updateStatusWrongGuess = ()=> {
+export const disableInput = () => {
   return {
-    type: "UPDATE_STATUS_WRONG_GUESS"
+    type: "DISABLE_INPUT"
   };
 }
 

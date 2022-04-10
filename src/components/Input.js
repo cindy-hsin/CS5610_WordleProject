@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateValidUserInput } from "../actions";
 import { VALID_ENGLISH_WORD_LIST } from "../setting";
 
@@ -32,6 +32,8 @@ export default function Input(props) {
   const [userInput, setUserInput] = useState("");
   console.log("Input Re-rendered!, userInput:", userInput);
   const [validationMessage, setValidationMessage] = useState("");
+
+  const isInputDisabled = useSelector(state=> state.game.isInputDisabled);
   const dispatch = useDispatch();
 
 
@@ -71,8 +73,9 @@ export default function Input(props) {
 
   
   return (
-    <div>Input Component!
-      <Alert variant="info" style={{width: "20rem", padding: "0.5rem 0.5rem"}}> 
+    <div>
+      <Alert variant="info" style={{width: "20rem", padding: "0.5rem 0.5rem", 
+        display: isInputDisabled ? 'none' : 'block'}}> 
         <p style={{marginBottom: "0"}}>Please enter a {validWordLength}-letter word:</p>
       </Alert>
       <input
@@ -81,15 +84,17 @@ export default function Input(props) {
           //userInput = event.target.value;
           console.log("userInput at onChange: ", userInput)}}
         type={"text"}
+        disabled={isInputDisabled}
       />
-      <button onClick={
-        () => {
+      {/* disabled={isInputDisabled} */}
+
+      <button onClick={() => {
           console.log("userInput: ",userInput);
           if (validateInput(userInput, validWordLength)) {
             dispatch(updateValidUserInput(userInput));
           }
-        }
-      }>{"Submit"}</button>
+        }} disabled={isInputDisabled}
+      >{"Submit"}</button>
       { validationMessage === "" ? <></> : 
          <Alert variant="danger" style={{width: "20rem", padding: "0.5rem 0.5rem"}}>
           <p style={{marginBottom: "0"}}>{validationMessage}</p>

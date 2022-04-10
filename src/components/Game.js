@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual} from 'react-redux';
 import { resetRemainAttemptNumber, resetAnswerWord } from '../actions';
 
 
@@ -12,6 +12,7 @@ import { DIFFICULTY_SETTING } from '../setting';
 
 
 export default function Game(props) {
+  console.log("Game is Re-rendered!");
   const pathParams = useParams();
   const currentDifficulty = pathParams.difficulty;
   const currentDifficultySetting = DIFFICULTY_SETTING[currentDifficulty];
@@ -30,7 +31,12 @@ export default function Game(props) {
   dispatch(resetAnswerWord(answer));
   dispatch(resetRemainAttemptNumber(currentDifficultySetting.attemptNumber));
   
-  // TODO: Update global state "historyGuesses"
+  // const status = useSelector(state => state.game.status, shallowEqual);
+  // const { isInputDisabled } = status;
+
+  
+
+
 
   function generateAnswerInfo(answer) {
     const answerInfo = {}
@@ -66,7 +72,12 @@ export default function Game(props) {
       <div>Target Word: {answer}</div>
 
       <Status/>
-      <Input validWordLength={currentDifficultySetting.wordLength}/>
+
+      <Input 
+        validWordLength={currentDifficultySetting.wordLength} 
+        // style={{display: isInputDisabled ? 'none' : 'block'}}
+        />
+
       <Output 
         rowNumber = {currentDifficultySetting.attemptNumber}
         wordLength = {currentDifficultySetting.wordLength}

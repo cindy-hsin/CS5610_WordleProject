@@ -13,8 +13,10 @@ const initState = {
     currentUserInput:null,
     historyGuess:[],
     remainAttemptNumber: -1,
-    guessResult: false
-  }
+    guessResult: false,
+  },
+  isInputDisabled: false
+  
 }
 
 
@@ -63,7 +65,10 @@ export default function game(state=initState, action) {
     //     }
         
     //   }
-    
+    case "DISABLE_INPUT": 
+      return {...state,
+        isInputDisabled: true
+      };
     default:
       return state;
   }

@@ -113,8 +113,8 @@ export default function Output(props) {
 
   return(
     <div>
-      <div>rowNumber: {rowNumber}</div>
-      <div>wordLength: {wordLength}</div>
+      {/* <div>rowNumber: {rowNumber}</div>
+      <div>wordLength: {wordLength}</div> */}
       {/* <Row guess={}/> */}
        {/* {Array.from({length: rowNumber}, (v,i) => <Row wordLength={wordLength} key={i}/>)} */}
       {
