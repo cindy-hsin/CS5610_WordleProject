@@ -13,6 +13,7 @@ const store = createStore(rootReducer,
   // the Redux devtools extension
 );
 
+console.log("Global state store:", store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

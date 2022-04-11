@@ -1,35 +1,29 @@
-import React, { useState } from "react";
-import { shallowEqual, useSelector } from 'react-redux';
+import { useSelector, useDispatch, shallowEqual} from "react-redux";
+import { disableInput } from  '../actions';
+
 
 export default function Status(props) {
+    const status = useSelector(state => state.game.status, shallowEqual);
+    const { guessResult, remainAttemptNumber}= status;
+    const dispatch = useDispatch();
 
-    const [statusMessage, setStatusMessage] = useState("");
-    // const gameStatus = useSelector(state => state.game.guessResult);//shallowequal??
-    // const remainAttemptNumber = useSelector(state => state.game.remainAttemptNumber);
+    let message = "";
 
-    // const status = useSelector(state => state.game.status, shallowEqual);
-    // const gameStatus = status.guessResult;
-    // const remainAttemptNumber = status.remainAttemptNumber;
-    // console.log("game Status: " + gameStatus);
-    // console.log("remain Attempt: " + remainAttemptNumber);
+    if (!guessResult && remainAttemptNumber > 0) {
+        message = `You have ${remainAttemptNumber} more chance(s).`;
+    } else { // End of Game situations:
+        if (guessResult) {
+            message = "Congrats! You've got the correct word!";
+        } else {
+            message = "Game Over! You've run out of chances!";
+        }
 
-    // function displayGameStatus(){
-    //     if(gameStatus){
-    //         setStatusMessage("Congrats!");
-    //     }else{
-    //         if(remainAttemptNumber > 0){
-    //             setStatusMessage("You can guess " + remainAttemptNumber + " times!");
-    //         }else{
-    //             setStatusMessage("End of game! Press the Reset Button to restart the game and try!");
-    //         }
-    //     }
-    // }
-
+        dispatch(disableInput());
+    }
 
     return (
         <div>
-            {/*Status: {statusMessage}*/}
-            Status
+            Status: {message}
         </div>
     )
 }

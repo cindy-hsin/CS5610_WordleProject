@@ -3,11 +3,11 @@ export const DIFFICULTY_SETTING = {
   easy: {
     wordLength : 5,
     attemptNumber: 7,
-    answerWordList: ['world', 'apple', 'handy', 'bloom', 'speed']
+    answerWordList: ['world', 'apple', 'handy', 'bloom', 'speed', 'ooofy']
   },
   medium: {
     wordLength : 6,
-    attemptNumber: 7,
+    attemptNumber: 6,
     answerWordList: ['cherry', 'secret', 'gloomy', 'combat', 'hidden']
   },
   hard: {
@@ -19,7 +19,7 @@ export const DIFFICULTY_SETTING = {
 
 
 export const VALID_ENGLISH_WORD_LIST = [
-  'world', 'apple', 'handy', 'bloom', 'speed',
+  'world', 'apple', 'handy', 'bloom', 'speed','ooofy',
   'cherry', 'secret', 'gloomy', 'combat', 'hidden',
   'success', 'failure', 'various', 'average', 'stellar'
 ]
