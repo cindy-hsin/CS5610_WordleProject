@@ -35,13 +35,13 @@
     margin: 5px 10px;
 }
 
+.instruction{
+    text-align: left;
+}
+
 @media(max-width: 768px) {
     .rule-content{
         margin-left: 15%;
         margin-right: 15%;
-    }
-
-    .instruction{
-        text-align: left;
     }
 }
