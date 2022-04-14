@@ -54,8 +54,6 @@ export default function game(state=initState, action) {
                     guessResult: true
                 }
             };
-        case "UPDATE_STATUS_WRONG_GUESS":
-            return state;
 
         case "DISABLE_INPUT":
             return {...state,

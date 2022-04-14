@@ -19,7 +19,6 @@ export const updateValidUserInput = (inputValidWord, answerInfoCopy, wordLength)
         answerInfoCopy,
         wordLength
     };
-
 }
 
 export const updateStatusCorrectGuess = ()=> {
@@ -33,12 +32,4 @@ export const disableInput = () => {
     return {
         type: "DISABLE_INPUT"
     };
-}
-
-
-export const addToHistoryGuess = (newGuess) => {
-    return {
-        type: "ADD_TO_HISTORY_GUESS",
-        payload: newGuess
-    }
 }
