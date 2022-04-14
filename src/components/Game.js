@@ -53,6 +53,10 @@ export default function Game(props) {
 
     }
 
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
     return (
         /** Conditional rendering - documentation:
          * https://reactjs.org/docs/conditional-rendering.html#:~:text=isLoggedIn%3B%0A%20%20%20%20let%20button%3B-,if%20(isLoggedIn)%20%7B,%7D,-return%20(%0A%20%20%20%20%20%20%3Cdiv%3E
@@ -61,7 +65,7 @@ export default function Game(props) {
         <div className="game">
             <Button className="restart" href={"/game/" + currentDifficulty}
                     variant="dark">Restart</Button>
-            <div className="game-level">Game Level: {currentDifficulty}</div>
+            <div className="game-level">Game Level: {capitalizeFirstLetter(currentDifficulty)}</div>
             {/*<div>Target Word: {answer}</div>*/}
 
 
