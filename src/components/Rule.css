@@ -39,6 +39,9 @@
     .rule-content{
         margin-left: 15%;
         margin-right: 15%;
+    }
+
+    .instruction{
         text-align: left;
     }
 }
