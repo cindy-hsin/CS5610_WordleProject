@@ -1,5 +1,5 @@
-import { useSelector, useDispatch, shallowEqual} from "react-redux";
-import { disableInput } from  '../actions';
+import {useSelector, useDispatch, shallowEqual} from "react-redux";
+import {disableInput} from '../actions';
 import {Alert} from "react-bootstrap";
 import React from "react";
 import './Status.css';
@@ -7,7 +7,7 @@ import './Status.css';
 
 export default function Status(props) {
     const status = useSelector(state => state.game.status, shallowEqual);
-    const { guessResult, remainAttemptNumber}= status;
+    const {guessResult, remainAttemptNumber} = status;
     const dispatch = useDispatch();
 
     let message = "";

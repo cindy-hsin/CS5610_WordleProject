@@ -1,7 +1,7 @@
 import Row from './Row';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import {useSelector, useDispatch, shallowEqual} from 'react-redux';
 
-import { updateStatusCorrectGuess } from '../actions';
+import {updateStatusCorrectGuess} from '../actions';
 
 
 export default function Output(props) {
@@ -34,7 +34,6 @@ export default function Output(props) {
     */
 
 
-
     // WHENEVER a re-rending happens (i.e. Whenever there's a valid input),
     // check the valid input, and get the array of colors.
     /* Since colors should be stored in global state,
@@ -55,15 +54,13 @@ export default function Output(props) {
     }
 
 
-    return(
+    return (
         <div>
             {
                 historyGuess.map((guess) => <Row wordLength={wordLength} guess={guess}/>)
             }
         </div>
     )
-
-
 
 
 }
