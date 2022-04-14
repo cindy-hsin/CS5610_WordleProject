@@ -1,0 +1,8 @@
+.highlighted{
+    border-bottom: 3px solid rgb(174, 185, 28) !important;
+}
+
+.nav-bar{
+    position: sticky;
+    top: 0;
+}

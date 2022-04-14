@@ -10,7 +10,7 @@ import Output from './Output';
 import { Button } from 'react-bootstrap';
 import { DIFFICULTY_SETTING } from '../setting';
 
-
+import './Game.css';
 
 export default function Game(props) {
   console.log("Game is Re-rendered!");
@@ -58,22 +58,23 @@ export default function Game(props) {
    * https://reactjs.org/docs/conditional-rendering.html#:~:text=isLoggedIn%3B%0A%20%20%20%20let%20button%3B-,if%20(isLoggedIn)%20%7B,%7D,-return%20(%0A%20%20%20%20%20%20%3Cdiv%3E
    */
     
-    <div>
-      <Button href={"/game/" + currentDifficulty}
+    <div className="game">
+      <Button className="restart" href={"/game/" + currentDifficulty}
         variant="dark">Restart</Button>
-      <div>Game Level: {currentDifficulty}</div>
-      <div>Target Word: {answer}</div>
+      <div className="game-level">Game Level: {currentDifficulty}</div>
+      {/*<div>Target Word: {answer}</div>*/}
 
-      <Status/>
 
       <Input 
         validWordLength={currentDifficultySetting.wordLength} 
         answerInfo={answerInfo}
         />
 
+      <Status/>
       <Output 
         wordLength = {currentDifficultySetting.wordLength}
-        answer={answer}/>      
+        answer={answer}/>
+
     </div>
   )
 };

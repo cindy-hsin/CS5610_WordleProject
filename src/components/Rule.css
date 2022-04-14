@@ -1,0 +1,44 @@
+/*@media (max-width: 767px)*/
+/*.word{*/
+/*    font-size: 22px;*/
+/*    width: 48px;*/
+/*    height: 48px;*/
+/*}*/
+.rule-content{
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top:30px;
+    text-align: center
+}
+
+.letter-box {
+    width: 50px;
+    height: 50px;
+    border: solid black 2px;
+}
+
+.yellow{
+    background-color: yellow;
+}
+
+.green{
+    background-color: green;
+}
+
+.grey{
+    background-color: grey;
+}
+
+.word-row {
+    display: flex;
+    justify-content: center;
+    margin: 5px 10px;
+}
+
+@media(max-width: 768px) {
+    .rule-content{
+        margin-left: 15%;
+        margin-right: 15%;
+        text-align: left;
+    }
+}
