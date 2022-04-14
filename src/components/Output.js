@@ -4,7 +4,6 @@ import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 import { updateStatusCorrectGuess } from '../actions';
 
 
-
 export default function Output(props) {
 
     const wordLength = props.wordLength;

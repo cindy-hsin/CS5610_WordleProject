@@ -34,3 +34,11 @@
     justify-content: center;
     margin: 5px 10px;
 }
+
+@media(max-width: 768px) {
+    .rule-content{
+        margin-left: 15%;
+        margin-right: 15%;
+        text-align: left;
+    }
+}

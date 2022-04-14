@@ -4,7 +4,7 @@ import { updateValidUserInput } from "../actions";
 import { VALID_ENGLISH_WORD_LIST } from "../setting";
 
 import { Alert } from 'react-bootstrap';
-
+import './Input.css';
 
 export default function Input(props) {
 
@@ -74,7 +74,7 @@ export default function Input(props) {
 
     return (
         <div>
-            <Alert variant="info" style={{width: "20rem", padding: "0.5rem 0.5rem",
+            <Alert className="alert" variant="info" style={{padding: "0.5rem 0.5rem",
                 display: isInputDisabled ? 'none' : 'block'}}>
                 <p style={{marginBottom: "0"}}>Please enter a {validWordLength}-letter word:</p>
             </Alert>
@@ -88,7 +88,7 @@ export default function Input(props) {
             />
             {/* disabled={isInputDisabled} */}
 
-            <button onClick={() => {
+            <button className="click-button" onClick={() => {
                 console.log("userInput: ",userInput);
                 if (validateInput(userInput, validWordLength)) {
                     const answerInfo = props.answerInfo;
@@ -118,7 +118,7 @@ export default function Input(props) {
             }} disabled={isInputDisabled}
             >{"Submit"}</button>
             { validationMessage === "" ? <></> :
-                <Alert variant="danger" style={{width: "20rem", padding: "0.5rem 0.5rem"}}>
+                <Alert className="alert" variant="danger" style={{padding: "0.5rem 0.5rem"}}>
                     <p style={{marginBottom: "0"}}>{validationMessage}</p>
                 </Alert>
             }

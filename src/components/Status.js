@@ -1,5 +1,8 @@
 import { useSelector, useDispatch, shallowEqual} from "react-redux";
 import { disableInput } from  '../actions';
+import {Alert} from "react-bootstrap";
+import React from "react";
+import './Status.css';
 
 
 export default function Status(props) {
@@ -22,8 +25,11 @@ export default function Status(props) {
     }
 
     return (
-        <div>
-            Status: {message}
-        </div>
+        // <div>
+        //     Status: {message}
+        // </div>
+        <Alert className="alert" variant="warning" style={{padding: "0.5rem 0.5rem"}}>
+            <p style={{marginBottom: "0"}}>{message}</p>
+        </Alert>
     )
 }

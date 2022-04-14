@@ -36,6 +36,7 @@ export default function game(state=initState, action) {
             };
         case "UPDATE_VALID_USER_INPUT":
             const colors = checkUserGuess(action.inputValidWord, action.answerInfoCopy, action.wordLength);
+            console.log(state.status.historyGuess);
 
             return {...state,
                 status: {...state.status,

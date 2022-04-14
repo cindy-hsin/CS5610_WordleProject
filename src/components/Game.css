@@ -1,0 +1,23 @@
+.game{
+    margin-top:20px;
+    margin-left: 35%;
+    margin-right: 35%;
+    /*text-align: center;*/
+}
+
+.restart{
+    float:right;
+}
+
+.game-level{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media(max-width: 768px) {
+    .game{
+        margin-left: 15%;
+        margin-right: 15%;
+        justify-content: center;
+    }
+}
