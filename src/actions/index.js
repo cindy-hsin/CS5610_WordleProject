@@ -21,7 +21,7 @@ export const updateValidUserInput = (inputValidWord, answerInfoCopy, wordLength)
     };
 }
 
-export const updateStatusCorrectGuess = ()=> {
+export const updateStatusCorrectGuess = () => {
     return {
         type: "UPDATE_STATUS_CORRECT_GUESS"
     };

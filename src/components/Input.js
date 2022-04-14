@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { updateValidUserInput } from "../actions";
-import { VALID_ENGLISH_WORD_LIST } from "../setting";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {updateValidUserInput} from "../actions";
+import {VALID_ENGLISH_WORD_LIST} from "../setting";
 
-import { Alert } from 'react-bootstrap';
+import {Alert} from 'react-bootstrap';
 import './Input.css';
 
 export default function Input(props) {
@@ -33,7 +33,7 @@ export default function Input(props) {
     console.log("Input Re-rendered!, userInput:", userInput);
     const [validationMessage, setValidationMessage] = useState("");
 
-    const isInputDisabled = useSelector(state=> state.game.isInputDisabled);
+    const isInputDisabled = useSelector(state => state.game.isInputDisabled);
     const dispatch = useDispatch();
 
 
@@ -60,7 +60,7 @@ export default function Input(props) {
     }
 
     function checkEnglishWord(userInput) {
-        if (! (VALID_ENGLISH_WORD_LIST.includes(userInput))) {
+        if (!(VALID_ENGLISH_WORD_LIST.includes(userInput))) {
             setValidationMessage("Your input word is not a valid English word! ");
             return false;
         }
@@ -71,25 +71,27 @@ export default function Input(props) {
     }
 
 
-
     return (
         <div>
-            <Alert className="alert" variant="info" style={{padding: "0.5rem 0.5rem",
-                display: isInputDisabled ? 'none' : 'block'}}>
+            <Alert className="alert" variant="info" style={{
+                padding: "0.5rem 0.5rem",
+                display: isInputDisabled ? 'none' : 'block'
+            }}>
                 <p style={{marginBottom: "0"}}>Please enter a {validWordLength}-letter word:</p>
             </Alert>
             <input
                 onChange={(event) => {
                     setUserInput(event.target.value);
                     //userInput = event.target.value;
-                    console.log("userInput at onChange: ", userInput)}}
+                    console.log("userInput at onChange: ", userInput)
+                }}
                 type={"text"}
                 disabled={isInputDisabled}
             />
             {/* disabled={isInputDisabled} */}
 
             <button className="click-button" onClick={() => {
-                console.log("userInput: ",userInput);
+                console.log("userInput: ", userInput);
                 if (validateInput(userInput, validWordLength)) {
                     const answerInfo = props.answerInfo;
                     console.log("When confirm is a valid Input, answerInfo:", answerInfo);
@@ -117,7 +119,7 @@ export default function Input(props) {
                 }
             }} disabled={isInputDisabled}
             >{"Submit"}</button>
-            { validationMessage === "" ? <></> :
+            {validationMessage === "" ? <></> :
                 <Alert className="alert" variant="danger" style={{padding: "0.5rem 0.5rem"}}>
                     <p style={{marginBottom: "0"}}>{validationMessage}</p>
                 </Alert>
