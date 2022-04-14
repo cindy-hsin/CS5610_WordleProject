@@ -6,16 +6,12 @@ import Game from './components/Game';
 import Rule from './components/Rule';
 import NavBar from './components/NavBar';
 
-import './App.css';
-
 function App() {
   return (
     <BrowserRouter>
       {/* Anything here that is Not in a <Route/>
       is displayed on EVERY PAGE,
       because App is the highest parent!*/}
-      <div>Wordle App Title!!</div>
-      
       <NavBar/>
        
       <Routes>
