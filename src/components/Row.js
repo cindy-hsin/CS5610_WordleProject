@@ -6,10 +6,17 @@ export default function Row(props) {
     const {inputValidWord, colors} = props.guess;
 
 
-    console.log(`Row id: ${props.rowId}, inputValidWord: ${inputValidWord}, colors: ${colors}`);
+    // console.log(`Row id: ${props.rowId}, inputValidWord: ${inputValidWord}, colors: ${colors}`);
     return (
         <div className='word-row'>
-            {Array.from({length: props.wordLength},
+            { inputValidWord === null ? 
+             Array.from({length: props.wordLength},
+              (ele, idx) => <Box id={idx}
+                                 letter={""}
+                                 color={"white"}
+                                 key={idx}/>)
+            :
+            Array.from({length: props.wordLength},
                 (ele, idx) => <Box id={idx}
                                    letter={inputValidWord[idx]}
                                    color={colors[idx]}

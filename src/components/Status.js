@@ -37,7 +37,6 @@ export default function Status(props) {
                 <p style={{marginBottom: "0"}}>{message}</p>
             </Alert>
             <Confetti width={width} height={height}/>
-        }
         </div>
     )
 }

@@ -37,19 +37,29 @@ export default function game(state = initState, action) {
                     remainAttemptNumber: action.payload
                 }
             };
+        case "RESET_HISTORY_GUESS": 
+            return {...state,
+                status: {...state.status, 
+                historyGuess: action.payload}
+            }; 
         case "UPDATE_VALID_USER_INPUT":
             const colors = checkUserGuess(action.inputValidWord, action.answerInfoCopy, action.wordLength);
             console.log(state.status.historyGuess);
+
+            const newHistoryGuess = [...state.status.historyGuess];
+            const currentRowId = action.totalAttemptNumber - state.status.remainAttemptNumber;
+            console.log("totalAttemptNumber: ", action.totalAttemptNumber );
+            console.log("remainAttemptNumber: ", state.status.remainAttemptNumber );
+            console.log("currentRowId: ", currentRowId);
+
+            newHistoryGuess[currentRowId] = {inputValidWord: action.inputValidWord, colors: colors};
 
             return {
                 ...state,
                 status: {
                     ...state.status,
                     currentUserInput: action.inputValidWord,
-                    historyGuess: [...state.status.historyGuess, {
-                        inputValidWord: action.inputValidWord,
-                        colors: colors
-                    }],
+                    historyGuess: newHistoryGuess,
                     remainAttemptNumber: state.status.remainAttemptNumber - 1
                 }
             };
