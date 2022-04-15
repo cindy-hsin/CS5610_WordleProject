@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from 'react-router';
 import {useDispatch} from 'react-redux';
-import {resetRemainAttemptNumber, resetAnswerWord} from '../actions';
+import {resetRemainAttemptNumber, resetAnswerWord, resetHistoryGuess } from '../actions';
 
 
 import Status from './Status';
@@ -27,12 +27,17 @@ export default function Game(props) {
     console.log("Answer word: ", answer);
     const answerInfo = generateAnswerInfo(answer);
 
-
+    // !!! 
+    const historyGuess = Array(currentDifficultySetting.attemptNumber).fill({
+      inputValidWord: null, 
+      colors: null});
+      // color: Array(currentDifficultySetting.wordLength).fill("white")});
+    console.log("Initial historyGuess:", historyGuess);
     const dispatch = useDispatch();
 
     dispatch(resetAnswerWord(answer));
     dispatch(resetRemainAttemptNumber(currentDifficultySetting.attemptNumber));
-
+    dispatch(resetHistoryGuess(historyGuess));
 
     function generateAnswerInfo(answer) {
         const answerInfo = {}
@@ -72,6 +77,7 @@ export default function Game(props) {
             <Input
                 validWordLength={currentDifficultySetting.wordLength}
                 answerInfo={answerInfo}
+                totalAttemptNumber={currentDifficultySetting.attemptNumber}
             />
 
             <Status/>

@@ -53,11 +53,13 @@ export default function Output(props) {
         console.log("Dispatched updateStatusCorrectGuess")
     }
 
-
+    console.log("0-index historyGuess", historyGuess[0]);
     return (
         <div>
             {
-                historyGuess.map((guess) => <Row wordLength={wordLength} guess={guess}/>)
+                // historyGuess.map((guess) => <Row wordLength={wordLength} guess={guess}/>)
+                
+                historyGuess.map((guess,i) => <Row key={i} wordLength={wordLength} guess={guess}/>)
             }
         </div>
     )

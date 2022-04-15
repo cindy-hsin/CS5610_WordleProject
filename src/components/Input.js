@@ -115,7 +115,7 @@ export default function Input(props) {
                         }
                     }
 
-                    dispatch(updateValidUserInput(userInput, answerInfoCopy, validWordLength));
+                    dispatch(updateValidUserInput(userInput, answerInfoCopy, validWordLength, props.totalAttemptNumber));
                 }
             }} disabled={isInputDisabled}
             >{"Submit"}</button>
