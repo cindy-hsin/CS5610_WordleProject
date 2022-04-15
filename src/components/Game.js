@@ -67,7 +67,7 @@ export default function Game(props) {
          * https://reactjs.org/docs/conditional-rendering.html#:~:text=isLoggedIn%3B%0A%20%20%20%20let%20button%3B-,if%20(isLoggedIn)%20%7B,%7D,-return%20(%0A%20%20%20%20%20%20%3Cdiv%3E
          */
 
-        <div className="game">
+        <div className={"game-" + currentDifficulty}>
             <Button className="restart" href={"/game/" + currentDifficulty}
                     variant="dark">Restart</Button>
             <div className="game-level">Game Level: {capitalizeFirstLetter(currentDifficulty)}</div>
