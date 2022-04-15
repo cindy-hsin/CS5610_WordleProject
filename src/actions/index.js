@@ -12,12 +12,20 @@ export const resetAnswerWord = (newAnswerWord) => {
     };
 }
 
-export const updateValidUserInput = (inputValidWord, answerInfoCopy, wordLength) => {
+export const resetHistoryGuess = (newHistoryGuess) => {
+  return {
+    type: "RESET_HISTORY_GUESS",
+    payload: newHistoryGuess
+  }
+}
+
+export const updateValidUserInput = (inputValidWord, answerInfoCopy, wordLength, totalAttemptNumber) => {
     return {
         type: "UPDATE_VALID_USER_INPUT",
         inputValidWord,
         answerInfoCopy,
-        wordLength
+        wordLength,
+        totalAttemptNumber
     };
 }
 
