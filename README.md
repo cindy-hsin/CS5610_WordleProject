@@ -1,3 +1,4 @@
+# Wordle Game Clone
 Deployed on Heroku: http://wordlegame-pj2.herokuapp.com/
 
 * Built a clone of the popular “Wordle” game with Create-React-App, where the player guesses a randomly selected word of a fixed length in certain numbers of attempts. 
